@@ -1,12 +1,11 @@
 const express = require('express');
 const app = express();
 
-//
-app.get('/api/signup', (req, res) => {
-  res.json({
-    data: 'you hit sign up end point yay'
-  })
-})
+// import routes
+const authRoutes = require('./routes/auth.js');
+
+// middleware
+app.use('/api', authRoutes);
 
 // port
 const port = process.env.port || 8000;
