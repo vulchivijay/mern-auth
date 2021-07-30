@@ -7,6 +7,18 @@ require('dotenv').config();
 
 const app = express();
 
+// database
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  findAndModify: true,
+  useUnifiedTogology: false,
+  useCreateIndex: true
+}).then(() => {
+  console.log('DB connected!');
+}).catch(() => {
+  console.log('DB connection error')
+})
+
 // import routes
 const authRoutes = require('./routes/auth.js');
 
@@ -15,7 +27,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 // app.use(cors()); // allows all origins
 if ((process.env.NODE_ENV = 'development')) {
-  app.use(cors({origin: 'http://localhost:3000'}));
+  app.use(cors({origin: process.env.CLIENT_URL}));
 }
 
 // middleware
