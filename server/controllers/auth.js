@@ -42,13 +42,46 @@ exports.signup = (req, res) => {
   transporter
   .sendMail(emailData)
   .then(sent => {
-    console.log('SIGNUP EMAIL SENT', sent);
+    // console.log('SIGNUP EMAIL SENT', sent);
     return res.json({
       message: `Email has been sent to ${email}. Follow the instruction to activate your account`,
     });
   })
   .catch(err => {
-    console.log('SIGNUP EMAIL SENT ERROR', err);
+    // console.log('SIGNUP EMAIL SENT ERROR', err);
     return res.json({ message: err.message });
   });
+}
+
+exports.accountActivation = (req, res) => {
+  const {token} = req.body;
+
+  if (token) {
+    jwt.verify(token, process.env.JWT_ACCOUNT_ACTIVATION, (error, decoded) => {
+      if (error) {
+        // console.log('JWT verify in account activation error ', error);
+        return res.status(401).json({
+          error: 'Expired link, Signup again'
+        })
+      }
+
+      const { name, email, password } = jwt.decode(token);
+      const user = new User({name, email, password})
+      user.save((error, user) => {
+        if (error) {
+          // console.log('Save user in account activation error ', error);
+          return res.status(401).json({
+            error: 'Error saving user in database. Try signup again.'
+          });
+        }
+        return res.json({
+          message: 'Signup sucess. Please Sign in'
+        })
+      })
+    })
+  } else {
+    return res.json({
+      message: 'Something went wrong. Try again.'
+    })
+  }
 }
