@@ -3,13 +3,15 @@ import {Link} from 'react-router-dom';
 
 export default function Header () {
   return (
-    <header className="">
-      <nav>
-        <Link to='/' className="">Logo</Link>
-      </nav>
-      <nav>
-        <Link to='/signup' className="">Signup</Link>
-        <Link to='/signin' className="">Signin</Link>
+    <header>
+      <nav className="navbar navbar-light bg-light">
+        <div className="container-fluid">
+          <Link to='/' className="navbar-brand mb-0 h1">Logo</Link>
+          <div className="d-flex">
+            <Link to='/signup' className="nav-link">Signup</Link>
+            <Link to='/signin' className="nav-link">Signin</Link>
+          </div>
+        </div>
       </nav>
     </header>
   );

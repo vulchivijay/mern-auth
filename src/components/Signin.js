@@ -26,18 +26,24 @@ export default function Signin () {
   return (
     <React.Fragment>
       <Header />
-      <h1>Signin</h1>
-      <form onSubmit={() => {handleSubmit()}}>
-        <div>
-          <input type="email" placeholder="email" name="email" onChange={() => handleChange('email')} />
+      <div className="container">
+        <div className="justify-content-md-center">
+          <div className="col col-lg-4 mx-auto card">
+            <h1>Signin</h1>
+            <form onSubmit={() => {handleSubmit()}}>
+              <div>
+                <input className="form-control" type="email" placeholder="email" name="email" onChange={() => handleChange('email')} />
+              </div>
+              <div>
+                <input className="form-control" type="password" placeholder="password" name="password" onChange={() => handleChange('password')} />
+              </div>
+              <div>
+                <button className="btn btn-primary">Signin</button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div>
-          <input type="password" placeholder="password" name="password" onChange={() => handleChange('password')} />
-        </div>
-        <div>
-          <button>Signin</button>
-        </div>
-      </form>
+      </div>
     </React.Fragment>
   )
 }

@@ -12,35 +12,60 @@ export default function Signup () {
     name: "",
     email: "",
     password: "",
-    buttonText: ""
+    buttonText: "Submit"
   })
 
-  const handleChange = (name) => (event) => {
-    //
-  }
+  const {name, email, password, buttonText} = values;
 
+  const handleChange = (name) => (event) => {
+    setValues({...values, [name]: event.target.value });
+  }
+  console.log()
   const handleSubmit = (event) => {
-    //
+    event.preventDefault();
+    setValues({...values, buttonText: 'Submitting...'});
+    axios({
+      method: 'POST',
+      url: `${process.env.REACT_APP_API}/signup`,
+      data: { name, email, password }
+    })
+    .then(response => {
+      console.log('Sign up success', response);
+      setValues({...values, name:'', email: '', password: '', buttonText: 'Submit'})
+      toast.success(response.data.message);
+    })
+    .catch(error => {
+      console.log('Sign up error ', error.response.data);
+      setValues({...values, buttonText: 'Submit'})
+      toast.error(error.response.data.error);
+    })
   }
 
   return (
     <React.Fragment>
+      <ToastContainer />
       <Header />
-      <h1>Signup</h1>
-      <form onSubmit={() => {handleSubmit()}}>
-        <div>
-          <input type="text" placeholder="Name" name="name" onChange={() => handleChange('name')} />
+      <div className="container">
+        <div className="justify-content-md-center">
+          <div className="col col-lg-4 mx-auto card p-15">
+            <h1>Signup</h1>
+            <form onSubmit={handleSubmit}>
+              <div>
+                <input className="form-control" type="text" placeholder="Name" onChange={handleChange('name')} value={name} />
+              </div>
+              <div>
+                <input className="form-control" type="email" placeholder="email" onChange={handleChange('email')} value={email} />
+              </div>
+              <div>
+                <input className="form-control" type="password" placeholder="password" onChange={handleChange('password')} value={password} />
+              </div>
+              <div>
+                <button className="btn btn-primary">{buttonText}</button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div>
-          <input type="email" placeholder="email" name="email" onChange={() => handleChange('email')} />
-        </div>
-        <div>
-          <input type="password" placeholder="password" name="password" onChange={() => handleChange('password')} />
-        </div>
-        <div>
-          <button>Signup</button>
-        </div>
-      </form>
+      </div>
     </React.Fragment>
   )
 }
