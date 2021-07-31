@@ -3,7 +3,7 @@ const User = require('./../models/user');
 const jwt = require('jsonwebtoken');
 
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey('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');
+sgMail.setApiKey('sendGrid_API_KEY');
 
 exports.signup = (req, res) => {
   const { name, email, password} = req.body;
