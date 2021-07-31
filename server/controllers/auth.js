@@ -1,9 +1,7 @@
 // Controllers
 const User = require('./../models/user');
 const jwt = require('jsonwebtoken');
-
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey('sendGrid_API_KEY');
+const nodemailer = require('nodemailer');
 
 exports.signup = (req, res) => {
   const { name, email, password} = req.body;
@@ -16,27 +14,41 @@ exports.signup = (req, res) => {
   })
 
   const token = jwt.sign({name, email, password}, process.env.JWT_ACCOUNT_ACTIVATION, {expiresIn: '10m'});
-  const emailData = {
+
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: process.env.MAIL_USERNAME, // generated ethereal user
+      pass: process.env.MAIL_PASSWORD, // generated ethereal password
+    },
+  });
+
+  let emailData = {
     from: process.env.EMAIL_FROM,
     to: email,
-    subject: `Account activation link`,
+    subject: 'Account activation link',
     html: `
-      <p>Please use the following link to activate your account</p>
-      <p>${process.env.CLIENT_URL}/auth/activate/${token}</p>
-      <hr/>
-      <p>This email may contain sensetive information</p>
-      <p>${process.env.CLIENT_URL}</p>`
-  }
-  sgMail.send(emailData).then(sent => {
-    // console.log('Signup mail sent', sent);
+    <h2>Please use the following link to activate your account</h2>
+    <a href="${process.env.CLIENT_URL}/auth/activate/${token}">${process.env.CLIENT_URL}/auth/activate/${token}</a>
+    <hr/>
+    <p>This email may contain sensetive information</p>
+    <p>${process.env.CLIENT_URL}</p>
+    `,
+  };
+
+  transporter
+  .sendMail(emailData)
+  .then(sent => {
+    console.log('SIGNUP EMAIL SENT', sent);
     return res.json({
-      message: `Email has been sent to ${email}. Follow the instructions to activate your account`
-    })
+      message: `Email has been sent to ${email}. Follow the instruction to activate your account`,
+    });
   })
-  .catch(error => {
-    // console.log('Signup email sent error :', error);
-    return res.json({
-      message: error.message
-    })
-  })
+  .catch(err => {
+    console.log('SIGNUP EMAIL SENT ERROR', err);
+    return res.json({ message: err.message });
+  });
 }
