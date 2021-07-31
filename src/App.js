@@ -5,8 +5,6 @@ import Home from './components/Home';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
 
-import './App.css';
-
 const App = () => {
   return (
     <Switch>

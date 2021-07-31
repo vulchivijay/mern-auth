@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 export default function Header () {
   return (
-    <header className="flex items-center justify-between flex-wrap p-4">
+    <header className="">
       <nav>
         <Link to='/' className="">Logo</Link>
       </nav>
