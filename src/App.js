@@ -1,10 +1,12 @@
+import React from 'react';
+import Layout from './components/layout';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div>
+    <Layout>
       Landing page
-    </div>
+    </Layout>
   );
 }
 
