@@ -20,7 +20,7 @@ export default function Signup () {
   const handleChange = (name) => (event) => {
     setValues({...values, [name]: event.target.value });
   }
-  console.log()
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     setValues({...values, buttonText: 'Submitting...'});
@@ -30,12 +30,12 @@ export default function Signup () {
       data: { name, email, password }
     })
     .then(response => {
-      console.log('Sign up success', response);
+      // console.log('Sign up success', response);
       setValues({...values, name:'', email: '', password: '', buttonText: 'Submit'})
       toast.success(response.data.message);
     })
     .catch(error => {
-      console.log('Sign up error ', error.response.data);
+      // console.log('Sign up error ', error.response.data);
       setValues({...values, buttonText: 'Submit'})
       toast.error(error.response.data.error);
     })
