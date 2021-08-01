@@ -56,7 +56,7 @@ export default function Signup () {
             <label>User name</label>
           </div>
           <div className="form-floating">
-            <input className="form-control" type="email" placeholder="email" onChange={handleChange('email')} value={email} />
+            <input className="form-control br-0" type="email" placeholder="email" onChange={handleChange('email')} value={email} />
             <label>Email address</label>
           </div>
           <div className="form-floating">
