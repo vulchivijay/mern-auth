@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 
 import Header from './Header';
 
-export default function Signin () {
+export default function Signin ({ history }) {
 
   const [values, setValues] = useState({
     email: "",
@@ -36,6 +36,7 @@ export default function Signin () {
       authenticate(response, () => {
         setValues({...values, email: '', password: '', buttonText: 'Sign in'})
         toast.success(`Hey ${response.data.user.name}, Welcome back!`);
+        isAuth() && isAuth().role === 'admin' ? history.push('/admin') : history.push('/dashboard'); 
       });
     })
     .catch(error => {
@@ -50,7 +51,6 @@ export default function Signin () {
       {/* { JSON.stringify(isAuth())} */}
       <ToastContainer />
       <Header />
-      { isAuth() ? <Redirect to='/home' /> : null }
       <div className="form-signin text-center">
         <form onSubmit={handleSubmit}>
           <h1 className="h3 mb-3 fw-normal">Please sign in</h1>

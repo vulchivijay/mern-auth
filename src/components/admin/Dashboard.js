@@ -1,15 +1,15 @@
 import React from 'react';
 import Header from './../Header';
 
-const Home = () => {
+const Dashboard = () => {
   return (
     <div>
       <Header />
       <div className="container">
-        <h1 className="h1">Home page</h1>
+        <h1 className="h1">Dashboard page</h1>
       </div>
     </div>
   )
 }
 
-export default Home;
+export default Dashboard;

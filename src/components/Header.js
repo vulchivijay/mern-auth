@@ -28,9 +28,9 @@ function Header (match) {
           )}
           {isAuth() && (
             <React.Fragment>
-              <Link to='/home' className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none me-2">Logo</Link>
+              <Link to='/dashboard' className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none me-2">Logo</Link>
               <div className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <Link to='/home' className="nav-link px-2 link-dark">Home</Link>
+                <Link to='/dashboard' className="nav-link px-2 link-dark">Dashboard</Link>
                 <Link to='/about' className="nav-link px-2 link-dark">About</Link>
                 <Link to='/contact' className="nav-link px-2 link-dark">Contact</Link>
               </div>
