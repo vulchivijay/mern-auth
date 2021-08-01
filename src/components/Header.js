@@ -34,7 +34,7 @@ function Header (match) {
                 <Link to='/about' className="nav-link px-2 link-dark">About</Link>
                 <Link to='/contact' className="nav-link px-2 link-dark">Contact</Link>
                 {
-                  isAuth().role === 'admin' ? <Link to='/admin' className="nav-link px-2 link-dark">Admin</Link> : null
+                  isAuth().role === 'admin' ? <Link to='/settings' className="nav-link px-2 link-dark">Settings</Link> : null
                 }
               </div>
               <div className="col-md-3 text-end">

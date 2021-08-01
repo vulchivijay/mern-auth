@@ -26,7 +26,7 @@ const App = () => {
       <PrivateRoute exact path="/dashboard" component={Dashboard} />
       <PrivateRoute exact path="/about" component={About} />
       <PrivateRoute exact path="/contact" component={Contact} />
-      <SettingsRoute exact path="/admin" component={Settings} />
+      <SettingsRoute exact path="/settings" component={Settings} />
     </Switch>
   );
 }
