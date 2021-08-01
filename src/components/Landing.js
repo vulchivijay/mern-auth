@@ -5,8 +5,8 @@ export default function Landing () {
   return (
     <React.Fragment>
       <Header />
-      <div className="home-page">
-        <h1>Landing page</h1>
+      <div className="container">
+        <h1 className="h1 mb-3 fw-normal">Landing page</h1>
       </div>
     </React.Fragment>
   )

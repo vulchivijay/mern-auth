@@ -25,13 +25,6 @@ export default function Activate ({match}) {
     // console.log('hey', token, name.name);
   }, []);
 
-  const activationLink = (event) => (
-    <div className="">
-      <h1>Hey {name}, Ready to activate your account</h1>
-      <button className="btn btn-primary" onClick={handleSumbit}>Activate Account</button>
-    </div>
-  )
-
   const handleSumbit = (event) => {
     event.preventDefault();
     // setValues({...values, buttonText: 'Activating...'});
@@ -51,16 +44,20 @@ export default function Activate ({match}) {
     })
   }
 
+  const activationLink = (event) => (
+    <React.Fragment>
+      <h1 className="h1">Hey {name}!, Ready to activate your account? Click below button.</h1>
+      <button className="btn btn-primary" onClick={handleSumbit}>Activate Account</button>
+    </React.Fragment>
+  )
+
   return (
     <React.Fragment>
       <ToastContainer />
       <Header />
       <div className="container">
-        <div className="justify-content-md-center">
-          <div className="col col-lg-4 mx-auto card p-15">
-            <h1>Activate account</h1>
+        <div className="text-center">
             {activationLink()}
-          </div>
         </div>
       </div>
     </React.Fragment>

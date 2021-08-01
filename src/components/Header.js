@@ -5,40 +5,45 @@ import { Link, withRouter } from 'react-router-dom';
 function Header (match) {
   const isActive = path => {
     if (match.match.path === path){
-      return { color: '#39d000' }
+      return { color: '#00000' }
     } else {
-      return { color: '#000000'}
+      return { color: '#ffffff'}
     }
   }
   const username = JSON.parse(localStorage.getItem('user'));
 
   return (
-    <header>
-      <nav className="navbar navbar-light bg-light">
+    <header className="p-3 text-white mb-3 border-bottom">
+      <div className="container">
+        <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           {!isAuth() && (
-            <div className="container-fluid">
-              <Link to='/' className="navbar-brand mb-0 h1">Logo</Link>
-              <div className="d-flex">
-                <Link to='/signup' className="nav-link" style={ isActive('/signup') }>Signup</Link>
-                <Link to='/signin' className="nav-link" style={ isActive('/signin') }>Signin</Link>
+            <React.Fragment>
+              <Link to='/' className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">Logo</Link>
+              <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"></ul>
+              <div className="col-md-3 text-end">
+                <Link to='/signin' className="btn btn-outline-primary me-2">Sign in</Link>
+                <Link to='/signup' className="btn btn-primary">Sign up</Link>
               </div>
-            </div>
+            </React.Fragment>
           )}
           {isAuth() && (
-            <div className="container-fluid">
-              <Link to='/home' className="navbar-brand mb-0 h1">Logo</Link>
-              <div className="d-flex">
-                <Link to='/home' className="nav-link" style={ isActive('/home') }>Home</Link>
-                <Link to='/about' className="nav-link" style={ isActive('/about') }>About</Link>
-                <Link to='/contact' className="nav-link" style={ isActive('/contact') }>Contact</Link>
-                <span className="nav-link">Sign in as <b>{ username.name }</b></span>
-                <Link to='/' className="nav-link" onClick={() => {
+            <React.Fragment>
+              <Link to='/home' className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none me-2">Logo</Link>
+              <div className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <Link to='/home' className="nav-link px-2 link-dark">Home</Link>
+                <Link to='/about' className="nav-link px-2 link-dark">About</Link>
+                <Link to='/contact' className="nav-link px-2 link-dark">Contact</Link>
+              </div>
+              <div className="col-md-3 text-end">
+                <span className="text-dark me-4">Sign in as <b>{ username.name }</b></span>
+                <Link to='/' className="btn btn-primary" onClick={() => {
                   signout()
                 }}>Sign out</Link>
               </div>
-            </div>
+            </React.Fragment>
           )}
-      </nav>
+        </div>
+      </div>
     </header>
   );
 }

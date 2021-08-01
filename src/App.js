@@ -12,6 +12,8 @@ import About from './components/admin/About';
 import Contact from './components/admin/Contact';
 import PageNotFound from './components/layouts/404';
 
+import './styles/common.css';
+
 const App = () => {
   return (
     <Switch>
