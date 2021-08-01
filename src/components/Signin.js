@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { authenticate, isAuth } from './auth/Helpers';
 import { ToastContainer, toast } from 'react-toastify';

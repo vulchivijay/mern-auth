@@ -3,13 +3,13 @@ import { isAuth, signout } from './auth/Helpers';
 import { Link, withRouter } from 'react-router-dom';
 
 function Header (match) {
-  const isActive = path => {
-    if (match.match.path === path){
-      return { color: '#00000' }
-    } else {
-      return { color: '#ffffff'}
-    }
-  }
+  // const isActive = path => {
+  //   if (match.match.path === path){
+  //     return { color: '#00000' }
+  //   } else {
+  //     return { color: '#ffffff'}
+  //   }
+  // }
   const username = JSON.parse(localStorage.getItem('user'));
 
   return (
@@ -33,6 +33,9 @@ function Header (match) {
                 <Link to='/dashboard' className="nav-link px-2 link-dark">Dashboard</Link>
                 <Link to='/about' className="nav-link px-2 link-dark">About</Link>
                 <Link to='/contact' className="nav-link px-2 link-dark">Contact</Link>
+                {
+                  isAuth().role === 'admin' ? <Link to='/admin' className="nav-link px-2 link-dark">Admin</Link> : null
+                }
               </div>
               <div className="col-md-3 text-end">
                 <span className="text-dark me-4">Sign in as <b>{ username.name }</b></span>
