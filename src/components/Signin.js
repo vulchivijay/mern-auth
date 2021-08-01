@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import { authenticate, isAuth } from './auth/Helpers';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
@@ -32,11 +33,13 @@ export default function Signin () {
       // console.log('Sign in success', response);
 
       // save the response (user, token) localstorage/cookies
-      setValues({...values, email: '', password: '', buttonText: 'Signin'})
-      toast.success(`Hey ${response.data.user.name}, Welcome back!`);
+      authenticate(response, () => {
+        setValues({...values, email: '', password: '', buttonText: 'Signin'})
+        toast.success(`Hey ${response.data.user.name}, Welcome back!`);
+      });
     })
     .catch(error => {
-      console.log('Sign in error ', error.response.data);
+      // console.log('Sign in error ', error.response.data);
       setValues({...values, buttonText: 'Signin'})
       toast.error(error.response.data.error);
     })
@@ -44,8 +47,10 @@ export default function Signin () {
 
   return (
     <React.Fragment>
+      {/* { JSON.stringify(isAuth())} */}
       <ToastContainer />
       <Header />
+      { isAuth() ? <Redirect to='/' /> : null }
       <div className="container">
         <div className="justify-content-md-center">
           <div className="col col-lg-4 mx-auto card p-15">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import { isAuth } from './auth/Helpers';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
@@ -45,6 +46,7 @@ export default function Signup () {
     <React.Fragment>
       <ToastContainer />
       <Header />
+      { isAuth() ? <Redirect to='/' /> : null }
       <div className="container">
         <div className="justify-content-md-center">
           <div className="col col-lg-4 mx-auto card p-15">

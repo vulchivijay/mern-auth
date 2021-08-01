@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+// import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,11 +11,10 @@ export default function Activate ({match}) {
 
   const [values, setValues] = useState({
     name: "",
-    token: "",
-    show: true
+    token: ""
   })
 
-  const {name, token, show} = values;
+  const {name, token} = values;
 
   useEffect(() => {
     let token = match.params.token;
