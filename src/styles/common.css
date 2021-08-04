@@ -1,5 +1,28 @@
-/* Sign in */
+/* Logo */
+.logo {
+  font-size: 2rem;
+}
 
+/* landing page */
+.container-landing .lp-h1 {
+  font-size: 3rem;
+}
+
+.container-landing .lp-p {
+  font-size: 1.2rem;
+}
+
+/* common styles */
+.text-right {
+  text-align: right;
+}
+
+/* aside bar */
+.aside-primary a {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Sign in */
 .form-signin {
   width: 100%;
   max-width: 330px;

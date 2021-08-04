@@ -35,7 +35,7 @@ export default function Signin ({ history }) {
       authenticate(response, () => {
         setValues({...values, email: '', password: '', buttonText: 'Sign in'})
         toast.success(`Hey ${response.data.user.name}, Welcome back!`);
-        isAuth() && isAuth().role === 'admin' ? history.push('/admin') : history.push('/dashboard'); 
+        isAuth() && isAuth().role === 'admin' ? history.push('/settings') : history.push('/dashboard'); 
       });
     })
     .catch(error => {
