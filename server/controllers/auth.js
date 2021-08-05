@@ -118,3 +118,21 @@ exports.requireSignin = expressJwt({
   secret: process.env.JWT_SECRET,
   algorithms: ["sha1"]
 })
+
+exports.adminMiddleware = (req, res, next) => {
+  User.findById({_id: req.user._id}).exec((error, user) => {
+    if (error || !user) {
+      return res.status(400).json({
+        error: "User with that email does not exist. Please signup"
+      })
+    }
+    if (user.role === 'admin') {
+      return res.status(400).json({
+        error: "Access resorce. Access denied."
+      })
+    }
+
+    req.profile = user;
+    next();
+  })
+}
