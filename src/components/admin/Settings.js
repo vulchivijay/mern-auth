@@ -12,7 +12,11 @@ const Settings = () => {
             <AsideBar />
           </div>
           <div className="col col-md-9 col-lg-10">
-            <h1 className="h1">Settings page</h1>
+            <div className="row">
+              <div className="col-md-12">
+                User profile
+              </div>
+            </div>
           </div>
         </div>
       </div>

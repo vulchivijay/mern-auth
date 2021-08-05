@@ -12,7 +12,11 @@ const NewTask = () => {
             <AsideBar />
           </div>
           <div className="col col-md-9 col-lg-10">
-            <h1 className="h1">NewTask page</h1>
+            <div className="row">
+              <div className="col-md-12">
+                Add Task
+              </div>
+            </div>
           </div>
         </div>
       </div>

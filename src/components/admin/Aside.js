@@ -15,7 +15,7 @@ export default function AsideBar () {
         isAuth().role === 'admin' ? null : <Link to='/alltasks' className="nav-link px-2 link-dark">View tasks</Link>
       }
       {
-        isAuth().role === 'admin' ? null : <Link to='/settings' className="nav-link px-2 link-dark">Settings - user updates</Link>
+        isAuth().role === 'admin' ? null : <Link to='/settings' className="nav-link px-2 link-dark">Settings</Link>
       }
       {
         isAuth().role === 'admin' ? <Link to='/users' className="nav-link px-2 link-dark">Users</Link> : null

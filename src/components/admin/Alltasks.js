@@ -12,7 +12,17 @@ const AllTasks = () => {
             <AsideBar />
           </div>
           <div className="col col-md-9 col-lg-10">
-            <h1 className="h1">All Tasks page</h1>
+            <div className="row">
+              <div className="col-md-12">
+                Open tasks
+              </div>
+              <div className="col-md-12">
+                Inprogress tasks
+              </div>
+              <div className="col-md-12">
+                Completed tasks
+              </div>
+            </div>
           </div>
         </div>
       </div>

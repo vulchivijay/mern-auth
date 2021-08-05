@@ -12,7 +12,11 @@ const Dashboard = () => {
             <AsideBar />
           </div>
           <div className="col col-md-9 col-lg-10">
-            <h1 className="h1">Dashboard page</h1>
+            <div className="row">
+              <div className="col-md-4">Open tasks</div>
+              <div className="col-md-4">Inprogress tasks</div>
+              <div className="col-md-4">Completed tasks</div>
+            </div>
           </div>
         </div>
       </div>
