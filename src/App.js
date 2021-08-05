@@ -7,12 +7,14 @@ import Activate from './components/auth/Activate';
 import Signin from './components/Signin';
 
 import Dashboard from './components/admin/Dashboard';
-import About from './components/admin/About';
-import Contact from './components/admin/Contact';
+import DashboardAdmin from './components/admin/DashboardAdmin';
+import NewTask from './components/admin/NewTask';
+import AllTasks from './components/admin/Alltasks';
 import Settings from './components/admin/Settings';
+import Users from './components/admin/Users';
 
 import PrivateRoute from './components/auth/PrivateRoute';
-import SettingsRoute from './components/auth/SettingsRoute';
+import UsersRoute from './components/auth/UsersRoute';
 
 import './styles/common.css';
 
@@ -24,9 +26,11 @@ const App = () => {
       <Route exact path="/auth/activate/:token" component={Activate} />
       <Route exact path="/signin" component={Signin} />
       <PrivateRoute exact path="/dashboard" component={Dashboard} />
-      <PrivateRoute exact path="/about" component={About} />
-      <PrivateRoute exact path="/contact" component={Contact} />
-      <SettingsRoute exact path="/settings" component={Settings} />
+      <PrivateRoute exact path="/dashboardadmin" component={DashboardAdmin} />
+      <PrivateRoute exact path="/newtask" component={NewTask} />
+      <PrivateRoute exact path="/alltasks" component={AllTasks} />
+      <PrivateRoute exact path="/settings" component={Settings} />
+      <UsersRoute exact path="/users" component={Users} />
     </Switch>
   );
 }

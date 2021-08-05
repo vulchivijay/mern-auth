@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from './../Header';
+import Header from '../Header';
 import AsideBar from './Aside';
 
-const About = () => {
+const Users = () => {
   return (
     <React.Fragment>
       <Header />
@@ -12,7 +12,7 @@ const About = () => {
             <AsideBar />
           </div>
           <div className="col col-md-9 col-lg-10">
-            <h1 className="h1">About page</h1>
+            <h1 className="h1">Users page</h1>
           </div>
         </div>
       </div>
@@ -20,4 +20,4 @@ const About = () => {
   )
 }
 
-export default About;
+export default Users;

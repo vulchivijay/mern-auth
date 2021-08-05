@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './../Header';
 import AsideBar from './Aside';
 
-const Contact = () => {
+const DashboardAdmin = () => {
   return (
     <React.Fragment>
       <Header />
@@ -12,7 +12,7 @@ const Contact = () => {
             <AsideBar />
           </div>
           <div className="col col-md-9 col-lg-10">
-            <h1 className="h1">Contact page</h1>
+            <h1 className="h1">Dashboard Admin page</h1>
           </div>
         </div>
       </div>
@@ -20,4 +20,4 @@ const Contact = () => {
   )
 }
 
-export default Contact;
+export default DashboardAdmin;
