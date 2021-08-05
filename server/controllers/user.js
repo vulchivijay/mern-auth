@@ -13,3 +13,43 @@ exports.readuser = (req, res) => {
     res.json(user);
   })
 }
+
+exports.updateuser = (req, res) => {
+  // console.log(req.user, req.body);
+  const {name, password} = req.body;
+  User.findOne({_id: req.user._id}, (error, user) => {
+    if (error || !user) {
+      return res.status(400).json({
+        error: "User not found"
+      })
+    }
+    if (!name) {
+      return res.status(400).json({
+        error: "Name is required"
+      })
+    } else {
+      user.name = name;
+    }
+    if (password) {
+      if(password.length < 6) {
+        return res.status(400).json({
+          error: "Password should be min 6 characters long"
+        })
+      } else {
+        user.password = password;
+      }
+    }
+    user.save((error, updateduser) => {
+      if (error) {
+        console.log("user update failed");
+        return res.status(400).json({
+          error: "User update failed"
+        })
+      }
+      updateduser.hashed_password = undefined;
+      this.updateuser.salt = undefined;
+      res.json(updateduser);
+    });
+  })
+
+}
