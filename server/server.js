@@ -21,6 +21,7 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 // import routes
 const authRoutes = require('./routes/auth.js');
+const userRoutes = require('./routes/user.js');
 
 // app middleware
 app.use(morgan('dev'));
@@ -32,6 +33,7 @@ if ((process.env.NODE_ENV = 'development')) {
 
 // middleware
 app.use('/api', authRoutes);
+app.use('/api', userRoutes);
 
 // port
 const port = process.env.PORT || 8000;

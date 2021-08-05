@@ -2,6 +2,7 @@
 const User = require('./../models/user');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
+const expressJwt = require('express-jwt');
 
 exports.signup = (req, res) => {
   const { name, email, password} = req.body;
@@ -111,3 +112,9 @@ exports.signin = (req, res) => {
     })
   })
 }
+
+// middleware protecting API calls
+exports.requireSignin = expressJwt({
+  secret: process.env.JWT_SECRET,
+  algorithms: ["sha1"]
+})
