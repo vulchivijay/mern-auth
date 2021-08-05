@@ -116,7 +116,7 @@ exports.signin = (req, res) => {
 // middleware protecting API calls
 exports.requireSignin = expressJwt({
   secret: process.env.JWT_SECRET,
-  algorithms: ["sha1"]
+  algorithms: ['sha1', 'RS256', 'HS256']
 })
 
 exports.adminMiddleware = (req, res, next) => {
