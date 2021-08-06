@@ -9,7 +9,7 @@ const { readuser, updateuser } = require('./../controllers/user.js');
 
 // route paths
 router.get('/user/:id', requireSignin, readuser);
-router.put('/user/update', requireSignin, adminMiddleware, updateuser);
+router.put('/user/update', requireSignin, updateuser);
 router.put('/admin/update', requireSignin, adminMiddleware, updateuser);
 
 

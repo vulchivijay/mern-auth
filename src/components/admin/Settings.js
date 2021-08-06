@@ -52,10 +52,16 @@ const Settings = ({history}) => {
   
   const handleUpdate = (event) => {
     event.preventDefault();
+    let endpoint = null; 
+    if (isAuth().role === 'admin') {
+      endpoint = `${process.env.REACT_APP_API}/admin/update`;
+    } else {
+      endpoint = `${process.env.REACT_APP_API}/user/update`;
+    }
     setValues({...values, buttonText: 'Updating...'});
     axios({
       method: 'PUT',
-      url: `${process.env.REACT_APP_API}/user/update`,
+      url: endpoint,
       headers : {
         Authorization: `Bearer ${token}`
       },

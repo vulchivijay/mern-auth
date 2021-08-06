@@ -15,10 +15,10 @@ export default function AsideBar () {
         isAuth().role === 'admin' ? null : <Link to='/alltasks' className="nav-link px-2 link-dark">View tasks</Link>
       }
       {
-        isAuth().role === 'admin' ? <Link to='/settings' className="nav-link px-2 link-dark">Settings</Link> : <Link to='/settings' className="nav-link px-2 link-dark">Settings</Link>
+        isAuth().role === 'admin' ? <Link to='/users' className="nav-link px-2 link-dark">Users</Link> : null
       }
       {
-        isAuth().role === 'admin' ? <Link to='/users' className="nav-link px-2 link-dark">Users</Link> : null
+        isAuth().role === 'admin' ? <Link to='/settings' className="nav-link px-2 link-dark">Settings</Link> : <Link to='/settings' className="nav-link px-2 link-dark">Settings</Link>
       }
     </aside>
   )

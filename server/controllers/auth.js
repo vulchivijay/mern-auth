@@ -126,7 +126,7 @@ exports.adminMiddleware = (req, res, next) => {
         error: "User with that email does not exist. Please signup"
       })
     }
-    if (user.role === 'admin') {
+    if (user.role !== 'admin') {
       return res.status(400).json({
         error: "Access resource. Access denied."
       })
