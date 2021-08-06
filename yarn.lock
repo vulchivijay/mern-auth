@@ -2836,6 +2836,11 @@
   "resolved" "https://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz"
   "version" "1.0.0"
 
+"bootstrap-icons@^1.5.0":
+  "integrity" "sha512-44feMc7DE1Ccpsas/1wioN8ewFJNquvi5FewA06wLnqct7CwMdGDVy41ieHaacogzDqLfG8nADIvMNp9e4bfbA=="
+  "resolved" "https://registry.npmjs.org/bootstrap-icons/-/bootstrap-icons-1.5.0.tgz"
+  "version" "1.5.0"
+
 "bootstrap@^5.0.2":
   "integrity" "sha512-1Ge963tyEQWJJ+8qtXFU6wgmAVj9gweEjibUdbmcCEYsn38tVwRk8107rk2vzt6cfQcRr3SlZ8aQBqaD8aqf+Q=="
   "resolved" "https://registry.npmjs.org/bootstrap/-/bootstrap-5.0.2.tgz"

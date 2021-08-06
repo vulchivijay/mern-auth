@@ -1,10 +1,24 @@
 const User = require('./../models/user')
 
+exports.readusers = (req, res) => {
+  // console.log("body ", req.body);
+  User.find({}, function (error, users) {
+    if (error || !users) {
+      return res.status(400).json({
+        error: "Users not found"
+      })
+    }
+    // users.salt = undefined;
+    // users.hashed_password = undefined;
+    res.send(users);
+  });
+}
+
 exports.readuser = (req, res) => {
-  console.log("body ", req.body);
+  // console.log("body ", req.body);
   const userId = req.params.id;
-  User.findById(userId).exec((err, user) => {
-    if (err || !user) {
+  User.findById(userId).exec((error, user) => {
+    if (error || !user) {
       return res.status(400).json({
         error: "User not found"
       })
