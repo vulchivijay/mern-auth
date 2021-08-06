@@ -47,8 +47,11 @@ exports.updateuser = (req, res) => {
           error: "User update failed"
         })
       }
+      console.log('updateduser ', updateduser);
       updateduser.hashed_password = undefined;
-      this.updateuser.salt = undefined;
+      updateduser.salt = undefined;
+      updateduser.createdAt = undefined;
+      updateduser.updatedAt = undefined;
       res.json(updateduser);
     });
   })

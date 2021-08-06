@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import { isAuth, getCookie, signout } from '../auth/Helpers';
+import { isAuth, getCookie, signout, updateUser } from '../auth/Helpers';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
@@ -54,17 +54,22 @@ const Settings = ({history}) => {
     event.preventDefault();
     setValues({...values, buttonText: 'Updating...'});
     axios({
-      method: 'POST',
-      url: `${process.env.REACT_APP_API}/`,
-      data: { name, email, password }
+      method: 'PUT',
+      url: `${process.env.REACT_APP_API}/user/update`,
+      headers : {
+        Authorization: `Bearer ${token}`
+      },
+      data: { name, password }
     })
     .then(response => {
-      // console.log('Sign up success', response);
-      setValues({...values, name:'', email: '', password: '', buttonText: 'Update'})
-      toast.success(response.data.message);
+      // console.log('profile update success', response);
+      updateUser(response, () => {
+        setValues({...values, buttonText: 'Update'});
+        toast.success('Profile updated successfully.');
+      });
     })
     .catch(error => {
-      // console.log('Sign up error ', error.response.data);
+      // console.log('profile update error ', error.response.data);
       setValues({...values, buttonText: 'Update'})
       toast.error(error.response.data.error);
     })

@@ -67,3 +67,14 @@ export const signout = next => {
   removeCookie('token');
   removeLocalStorage('user');
 }
+
+// updating localstorage if user profile details modified.
+export const updateUser = (response, next) => {
+  console.log('update user in localstorage', response);
+  if (typeof window !== undefined) {
+    let auth = JSON.parse(localStorage.getItem('user'));
+    auth = response.data;
+    localStorage.setItem('user', JSON.stringify(auth));
+  }
+  next();
+}
