@@ -89,7 +89,7 @@ const UserTable = ({ data, index }) => {
       <td>{data.name}</td>
       <td>{data.email}</td>
       <td>{data.role}</td>
-      <td className="text-center"><i class="bi bi-trash"></i></td>
+      <td className="text-center"><i className="bi bi-trash"></i></td>
     </tr>
   )
 }
