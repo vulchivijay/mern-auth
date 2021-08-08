@@ -17,7 +17,10 @@ function Header (match) {
       {!isAuth() && (
         <div className="container">
           <div className="logo d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <Link to='/' className="h2 d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"><i className="bi bi-calendar-day-fill"></i> <span>daily tasks</span></Link>
+            <Link to='/' className="h2 d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+              <i className="bi bi-check2-all"></i>
+              <span>tasks</span>
+            </Link>
             <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"></ul>
             <div className="col-md-4 text-end">
               <Link to='/signup' className="btn btn-primary me-2">Sign up</Link>
@@ -29,7 +32,10 @@ function Header (match) {
       {isAuth() && (
         <div className="container-fluid">
           <div className="logo d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <Link to='/dashboard' className="h2 d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none me-2"><i className="bi bi-calendar-day-fill"></i> <span>daily tasks</span></Link>
+            <Link to='/dashboard' className="h2 d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none me-2">
+              <i className="bi bi-check2-all"></i>
+              <span>tasks</span>
+            </Link>
             <div className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               {/* <Link to='/dashboard' className="nav-link px-2 link-dark">Dashboard</Link> */}
               {/* <Link to='/about' className="nav-link px-2 link-dark">About</Link>

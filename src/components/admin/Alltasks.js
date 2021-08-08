@@ -87,7 +87,7 @@ const TodoTable = ({data, sort}) => {
             <th onClick={() => sort('status')}>Status</th>
             <th>Created at</th>
             <th>Updated at</th>
-            <th></th>
+            {/* <th></th> */}
           </tr>
         </thead>
         <tbody>
@@ -114,10 +114,10 @@ const TodoTableRow = ({ data, index }) => {
       <td>{ data.status }</td>
       <td>{ startDate }</td>
       <td>{ updatedDate }</td>
-      <td className="text-right">
+      {/* <td className="text-right">
         <i className="bi bi-pencil"></i>{' '}
         <i className="bi bi-trash"></i>
-      </td>
+      </td> */}
     </tr>
   )
 }
