@@ -2,16 +2,15 @@
 const Todos = require('./../models/todos');
 
 exports.todos = (req, res) => {
-  // console.log("body ", req.body);
-  Todos.find({}, function (error, todos) {
+  const userEmail = req.params.email;
+  Todos.find({email: userEmail}, function (error, todos) {
     if (error || !todos) {
       return res.status(400).json({
-        error: "Todos not found"
+        error: "todos not found"
       })
     }
     res.send(todos);
   });
-  
 }
 
 exports.todoupdate = (req, res) => {
@@ -25,7 +24,7 @@ exports.addtodo = (req, res) => {
   todo.save((error, todo) => {
     if (error) {
       return res.status(401).json({
-        error: 'Error saving todo in database. Try again.'
+        error: 'error saving todo in database. Try again.'
       });
     }
     return res.json({

@@ -1,8 +1,10 @@
 import React from 'react';
 import Header from './../Header';
 import AsideBar from './Aside';
+import TasksCount from './TasksCount';
 
-const Dashboard = () => {
+const Dashboard = ({history}) => {
+
   return (
     <React.Fragment>
       <Header />
@@ -12,11 +14,7 @@ const Dashboard = () => {
             <AsideBar />
           </div>
           <div className="col col-md-9 col-lg-10">
-            <div className="row">
-              <div className="col-md-4">Open tasks</div>
-              <div className="col-md-4">Inprogress tasks</div>
-              <div className="col-md-4">Completed tasks</div>
-            </div>
+            <TasksCount />
           </div>
         </div>
       </div>

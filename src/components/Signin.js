@@ -53,16 +53,15 @@ export default function Signin ({ history }) {
       <div className="form-signin text-center">
         <form onSubmit={handleSubmit}>
           <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
-          <div className="form-floating">
+          <div className="form-floating mb-3">
             <input className="form-control" type="email" placeholder="email" onChange={handleChange('email')} value={email} />
             <label>Email address</label>
           </div>
-          <div className="form-floating">
+          <div className="form-floating mb-3">
             <input className="form-control" type="password" placeholder="password" onChange={handleChange('password')} value={password} />
             <label>Password</label>
           </div>
           <button className="w-100 btn btn-lg btn-primary" type="submit">{buttonText}</button>
-          <p className="mt-5 mb-3 text-muted">&copy; 2021</p>
         </form>
       </div>
     </React.Fragment>

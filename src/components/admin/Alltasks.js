@@ -6,12 +6,7 @@ import Header from '../Header';
 import AsideBar from './Aside';
 
 const AllTasks = ({history}) => {
-  const [values, setValues] = useState({
-    title: "",
-    description: "",
-    status: "",
-    email: ""
-  });
+  const [values, setValues] = useState();
   const [loading, setLoading] = useState(false);
   const currentUser = isAuth().email;
 
@@ -24,7 +19,7 @@ const AllTasks = ({history}) => {
   const loadTodos = () => {
     axios({
       method: 'GET',
-      url: `${process.env.REACT_APP_API}/todos`,
+      url: `${process.env.REACT_APP_API}/todos/${currentUser}`,
       headers : {
         Authorization: `Bearer ${token}`
       }
@@ -35,7 +30,7 @@ const AllTasks = ({history}) => {
       response.data.map(item => {
         return data.push(item);
       })
-      setValues({...values, data});
+      setValues(data);
       setLoading(true);
     })
     .catch(error => {
@@ -62,7 +57,7 @@ const AllTasks = ({history}) => {
                 <p className="bg-light p-2 text-dark">Open tasks</p>
                 {
                   loading ?
-                  <TodoTable data={values.data} type="open" user={currentUser} />
+                  <TodoTable data={values} type="open"/>
                   :
                   'loading...'
                 }
@@ -71,7 +66,7 @@ const AllTasks = ({history}) => {
                 <p className="bg-light p-2 text-dark">Inprogress tasks</p>
                 {
                   loading ?
-                  <TodoTable data={values.data} type="inprogress" user={currentUser} />
+                  <TodoTable data={values} type="inprogress"/>
                   :
                   'loading...'
                 }
@@ -80,7 +75,7 @@ const AllTasks = ({history}) => {
                 <p className="bg-light p-2 text-dark">Completed tasks</p>
                 {
                   loading ?
-                  <TodoTable data={values.data} type="completed" user={currentUser} />
+                  <TodoTable data={values} type="completed"/>
                   :
                   'loading...'
                 }
@@ -93,7 +88,7 @@ const AllTasks = ({history}) => {
   )
 }
 
-const TodoTable = ({data, type, user}) => {
+const TodoTable = ({data, type}) => {
   return (
     <div className="table-responsive">
       <table className="table table-striped table-sm">
@@ -103,13 +98,15 @@ const TodoTable = ({data, type, user}) => {
             <th>Title</th>
             <th>Description</th>
             <th>Status</th>
+            <th>Created at</th>
+            <th>Last Modified at</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           {
             data.map( (item, index) => {
-              if (item.status === type && item.email === user) {
+              if (item.status === type) {
                 return <TodoTableRow key={index} data={item} index={index} />
               } else {
                 return null;
@@ -129,7 +126,9 @@ const TodoTableRow = ({ data, index }) => {
       <td>{data.title}</td>
       <td>{data.description}</td>
       <td>{data.status}</td>
-      <td className="text-center">
+      <td>created date</td>
+      <td>last updated</td>
+      <td className="text-right">
         <i className="bi bi-pencil"></i>{' '}
         <i className="bi bi-trash"></i>
       </td>

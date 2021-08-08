@@ -10,6 +10,6 @@ const { addtodo, todoupdate, todos } = require('./../controllers/todos.js');
 //
 router.post('/addtodo', requireSignin, addtodo);
 router.post('/addtodo/:id', requireSignin, todoupdate);
-router.get('/todos', requireSignin, todos);
+router.get('/todos/:email', requireSignin, todos);
 
 module.exports = router; // default empty object

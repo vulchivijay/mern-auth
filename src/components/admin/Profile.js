@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import Header from '../Header';
 import AsideBar from './Aside';
 
-const Settings = ({history}) => {
+const Profile = ({history}) => {
   const [values, setValues] = useState({
     name: "",
     email: "",
@@ -94,27 +94,25 @@ const Settings = ({history}) => {
           <div className="col col-md-9 col-lg-10">
             <div className="row">
               <div className="col-md-12">
-                <div className="form-signin">
+                <div className="form-signin m-0">
                   <form onSubmit={handleUpdate}>
-                    <h1 className="h3 mb-3 fw-normal">Profile update</h1>
-                    <div className="form-floating">
+                    <div className="form-floating mb-3">
                       <input className="form-control" type="text" placeholder="Name" onChange={handleChange('name')} value={name} />
                       <label>User name</label>
                     </div>
-                    <div className="form-floating">
+                    <div className="form-floating mb-3">
                       <input className="form-control br-0" type="email" placeholder="email" onChange={handleChange('email')} value={email} disabled />
                       <label>Email address</label>
                     </div>
-                    <div className="form-floating">
+                    <div className="form-floating mb-3">
                       <input className="form-control" type="text" placeholder="role" onChange={handleChange('role')} value={role} disabled />  
                       <label>Role</label>
                     </div>
-                    <div className="form-floating">
+                    <div className="form-floating mb-3">
                       <input className="form-control" type="password" placeholder="password" onChange={handleChange('password')} value={password} />  
                       <label>Password</label>
                     </div>
                     <button className="w-100 btn btn-lg btn-primary" type="submit">{buttonText}</button>
-                    <p className="mt-5 mb-3 text-muted">&copy; 2021</p>
                   </form>
                 </div>
               </div>
@@ -126,4 +124,4 @@ const Settings = ({history}) => {
   )
 }
 
-export default Settings;
+export default Profile;
