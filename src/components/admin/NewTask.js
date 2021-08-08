@@ -53,7 +53,7 @@ const NewTask = ({history}) => {
       <div className="container-fluid">
         <div className="row">
           <div className="col col-md-3 col-lg-2 aside-bar">
-            <AsideBar />
+            <AsideBar history={history}/>
           </div>
           <div className="col col-md-9 col-lg-10">
             <div className="row">

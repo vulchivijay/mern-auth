@@ -54,7 +54,7 @@ const AllTasks = ({history}) => {
       <div className="container-fluid">
         <div className="row">
           <div className="col col-md-3 col-lg-2 aside-bar">
-            <AsideBar />
+            <AsideBar history={history}/>
           </div>
           <div className="col col-md-9 col-lg-10">
             <div className="row">
@@ -124,15 +124,10 @@ const TodoTableRow = ({ data, index }) => {
 
 const DateTime = (timestamp) => {
   const TimeStamp = new Date(timestamp);
-  console.log(TimeStamp);
   const D = Zeros(TimeStamp.getDate(), 2);
-  const M = Zeros(TimeStamp.getMonth() + 1, 2); // Since getMonth() returns month from 0-11 not 1-12
+  const M = Zeros(TimeStamp.getMonth() + 1, 2);
   const Y = TimeStamp.getFullYear();
-  // const H = Zeros(TimeStamp.getHours(), 2);
-  // const Min = Zeros(TimeStamp.getMinutes(), 2);
   var newDate = D + "-" + M + "-" + Y;
-
-  // console.log("Formatted Date:", newDate)
   return newDate;
 }
 

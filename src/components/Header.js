@@ -3,13 +3,6 @@ import { isAuth, signout } from './auth/Helpers';
 import { Link, withRouter } from 'react-router-dom';
 
 function Header (match) {
-  // const isActive = path => {
-  //   if (match.match.path === path){
-  //     return { color: '#00000' }
-  //   } else {
-  //     return { color: '#ffffff'}
-  //   }
-  // }
   const username = JSON.parse(localStorage.getItem('user'));
 
   return (
