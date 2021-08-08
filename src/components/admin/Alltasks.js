@@ -43,6 +43,11 @@ const AllTasks = ({history}) => {
     })
   }
 
+  const sortTable = (key) => {
+    const sorted = [...values].sort((a, b) => (a[key] - b[key] ? 1 : -1));
+    setValues(sorted);
+  }
+
   return (
     <React.Fragment>
       <Header />
@@ -54,28 +59,10 @@ const AllTasks = ({history}) => {
           <div className="col col-md-9 col-lg-10">
             <div className="row">
               <div className="col-md-12">
-                <p className="bg-light p-2 text-dark">Open tasks</p>
+                <p>Following like jira tool</p>
                 {
                   loading ?
-                  <TodoTable data={values} type="open"/>
-                  :
-                  'loading...'
-                }
-              </div>
-              <div className="col-md-12">
-                <p className="bg-light p-2 text-dark">Inprogress tasks</p>
-                {
-                  loading ?
-                  <TodoTable data={values} type="inprogress"/>
-                  :
-                  'loading...'
-                }
-              </div>
-              <div className="col-md-12">
-                <p className="bg-light p-2 text-dark">Completed tasks</p>
-                {
-                  loading ?
-                  <TodoTable data={values} type="completed"/>
+                  <TodoTable data={values} sort={sortTable} />
                   :
                   'loading...'
                 }
@@ -88,29 +75,26 @@ const AllTasks = ({history}) => {
   )
 }
 
-const TodoTable = ({data, type}) => {
+const TodoTable = ({data, sort}) => {
   return (
-    <div className="table-responsive">
-      <table className="table table-striped table-sm">
-        <thead>
+    <div className="table-responsive tasks-table">
+      <table className="table table-striped table-md table-bordered">
+        <thead className="table-dark">
           <tr>
             <th>#</th>
             <th>Title</th>
             <th>Description</th>
-            <th>Status</th>
+            <th onClick={() => sort('status')}>Status</th>
             <th>Created at</th>
-            <th>Last Modified at</th>
+            <th>Updated at</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           {
-            data.map( (item, index) => {
-              if (item.status === type) {
-                return <TodoTableRow key={index} data={item} index={index} />
-              } else {
-                return null;
-              }
+            data
+            .map( (item, index) => {
+              return <TodoTableRow key={index} data={item} index={index} />
             })
           }
         </tbody>
@@ -120,20 +104,41 @@ const TodoTable = ({data, type}) => {
 }
 
 const TodoTableRow = ({ data, index }) => {
+  const startDate = DateTime(data.createdAt);
+  const updatedDate = DateTime(data.updatedAt);
   return (
     <tr>
-      <td>{index}</td>
-      <td>{data.title}</td>
-      <td>{data.description}</td>
-      <td>{data.status}</td>
-      <td>created date</td>
-      <td>last updated</td>
+      <td>{ index }</td>
+      <td>{ data.title }</td>
+      <td>{ data.description }</td>
+      <td>{ data.status }</td>
+      <td>{ startDate }</td>
+      <td>{ updatedDate }</td>
       <td className="text-right">
         <i className="bi bi-pencil"></i>{' '}
         <i className="bi bi-trash"></i>
       </td>
     </tr>
   )
+}
+
+const DateTime = (timestamp) => {
+  const TimeStamp = new Date(timestamp);
+  console.log(TimeStamp);
+  const D = Zeros(TimeStamp.getDate(), 2);
+  const M = Zeros(TimeStamp.getMonth() + 1, 2); // Since getMonth() returns month from 0-11 not 1-12
+  const Y = TimeStamp.getFullYear();
+  // const H = Zeros(TimeStamp.getHours(), 2);
+  // const Min = Zeros(TimeStamp.getMinutes(), 2);
+  var newDate = D + "-" + M + "-" + Y;
+
+  // console.log("Formatted Date:", newDate)
+  return newDate;
+}
+
+const Zeros = (num, places) => {
+  const zero = places - num.toString().length + 1;
+  return Array(+(zero > 0 && zero)).join("0") + num;
 }
 
 export default AllTasks;

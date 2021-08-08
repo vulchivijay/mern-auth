@@ -29,7 +29,7 @@ const TasksCount = ({history}) => {
       })
       setValues(data);
       setLoading(true);
-    })
+    }) 
     .catch(error => {
       // console.log("todos loading error ", error);
       if(error.response.status === 401) {
@@ -45,19 +45,19 @@ const TasksCount = ({history}) => {
       <div className="col-md-4">
         <div className="card text-center">
           <h1>{loading ? <Count data={values} type="open" /> : 0}</h1>
-          <div class="card-body">Open</div>
+          <div className="card-body">Open</div>
         </div>
       </div>
       <div className="col-md-4">
         <div className="card text-center">
           <h1>{loading ? <Count data={values} type="inprogress" /> : 0}</h1>
-          <div class="card-body">Inprogress</div>
+          <div className="card-body">Inprogress</div>
         </div>
       </div>
       <div className="col-md-4">
         <div className="card text-center">
           <h1>{loading ? <Count data={values} type="completed" /> : 0}</h1>
-          <div class="card-body">Complete</div>
+          <div className="card-body">Complete</div>
         </div>
       </div>
     </div>
