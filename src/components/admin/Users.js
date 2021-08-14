@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { isAuth, getCookie, signout } from '../auth/Helpers';
+import { getCookie, signout } from '../auth/Helpers';
 
 import Header from '../Header';
 import AsideBar from './Aside';

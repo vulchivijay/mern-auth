@@ -25,12 +25,12 @@
 .tasks-table table th:nth-child(2) {
   width: 25%;
 }
-.tasks-table table th:nth-child(3) {
+/* .tasks-table table th:nth-child(3) {
   width: 40%;
-}
+} */
 .tasks-table table th:nth-child(5),
 .tasks-table table th:nth-child(6) {
-  width: 10%;
+  width: 9%;
 }
 
 /* Sign in */
