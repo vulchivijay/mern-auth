@@ -20,16 +20,18 @@
 
 ![home screen](https://github.com/vulchivijay/mern-auth/blob/main/public/screenshots/landing.jpg)
 
-![signin screen](https://github.com/vulchivijay/mern-auth/blob/main/public/screenshots/login.jpg)
-
 ![singup screen](https://github.com/vulchivijay/mern-auth/blob/main/public/screenshots/signup.jpg)
+
+![signin screen](https://github.com/vulchivijay/mern-auth/blob/main/public/screenshots/login.jpg)
 
 ![dashboard screen](https://github.com/vulchivijay/mern-auth/blob/main/public/screenshots/dashboard.jpg)
 
-![add task screen](https://github.com/vulchivijay/mern-auth/blob/main/public/screenshots/add-task.jpg)
-
 ![all tasks screen](https://github.com/vulchivijay/mern-auth/blob/main/public/screenshots/all-tasks.jpg)
 
-![users page screen](https://github.com/vulchivijay/mern-auth/blob/main/public/screenshots/admin-users.jpg)
+![add task screen](https://github.com/vulchivijay/mern-auth/blob/main/public/screenshots/add-task.jpg)
+
+![edit task screen](https://github.com/vulchivijay/mern-auth/blob/main/public/screenshots/edit-task.jpg)
 
 ![profile page screen](https://github.com/vulchivijay/mern-auth/blob/main/public/screenshots/profile.jpg)
+
+![users page screen](https://github.com/vulchivijay/mern-auth/blob/main/public/screenshots/admin-users.jpg)
