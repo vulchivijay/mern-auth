@@ -56,7 +56,7 @@ exports.updateuser = (req, res) => {
     }
     user.save((error, updateduser) => {
       if (error) {
-        console.log("user update failed");
+        // console.log("user update failed");
         return res.status(400).json({
           error: "User update failed"
         })
@@ -69,5 +69,4 @@ exports.updateuser = (req, res) => {
       res.json(updateduser);
     });
   })
-
 }

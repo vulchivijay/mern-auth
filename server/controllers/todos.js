@@ -13,9 +13,53 @@ exports.todos = (req, res) => {
   });
 }
 
+exports.readtask = (req, res) => {
+  const taskId = req.params.id;
+  Todos.findById(taskId).exec((error, task) => {
+    if (error || !task) {
+      return res.status(400).json({
+        error: "Task not found"
+      })
+    }
+    task.email = undefined;
+    res.json(task);
+  })
+}
+
 exports.todoupdate = (req, res) => {
-  // const { title, description, email} = req.body;
-  
+  const {_id, title, description, status} = req.body;
+  console.log(_id, title, description, status);
+  Todos.findOne({_id: _id}, (error, task) => {
+    if (error || !task) {
+      return res.status(400).json({
+        error: "User not found"
+      })
+    }
+    if (!title) {
+      return res.status(400).json({
+        error: "Name is required"
+      })
+    } else {
+      task.title = title;
+    }
+    if (!description) {
+      return res.status(400).json({
+        error: "Description is required"
+      })
+    } else {
+      task.description = description;
+    }
+    task.status = status;
+    task.save((error, updatedtask) => {
+      if (error) {
+        // console.log("task update failed");
+        return res.status(400).json({
+          error: "Task update failed"
+        })
+      }
+      res.json(updatedtask);
+    });
+  })
 }
 
 exports.addtodo = (req, res) => {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { isAuth, getCookie, signout } from '../auth/Helpers';
 
@@ -108,8 +109,8 @@ const TodoTableRow = ({ data, index }) => {
   const updatedDate = DateTime(data.updatedAt);
   return (
     <tr>
-      <td>{ index }</td>
-      <td>{ data.title }</td>
+      <td><Link to={`/alltasks/${data._id}`} >{ index }</Link></td>
+      <td><Link to={`/alltasks/${data._id}`} >{ data.title }</Link></td>
       <td>{ data.description }</td>
       <td>{ data.status }</td>
       <td>{ startDate }</td>
