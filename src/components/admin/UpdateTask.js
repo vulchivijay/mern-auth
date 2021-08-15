@@ -90,7 +90,9 @@ const UpdateTask = (history) => {
               {
                   loading ?
                   ( <div className="form-signin m-0">
-                      <Link to='/alltasks' className="mb-3"><i className="bi bi-arrow-left"></i></Link>
+                      <nav className="mb-3">
+                        <Link to='/alltasks' className="mb-3"><i className="bi bi-arrow-left"></i></Link>
+                      </nav>
                       <form onSubmit={handleSubmit}>
                         <div className="form-floating mb-3">
                           <input className="form-control" type="text" placeholder="Title" onChange={handleChange('title')} value={title} />
